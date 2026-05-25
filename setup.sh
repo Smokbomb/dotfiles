@@ -8,34 +8,35 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "Setting up dotfiles from: $DOTFILES_DIR"
 
+link_file() {
+  local src="$1" dst="$2"
+  if [ -L "$dst" ]; then
+    echo "  [skip] $dst already symlinked"
+  elif [ -f "$dst" ]; then
+    mv "$dst" "$dst.bak"
+    echo "  [backup] $dst.bak"
+    ln -s "$src" "$dst" && echo "  [link] $dst"
+  else
+    ln -s "$src" "$dst" && echo "  [link] $dst"
+  fi
+}
+
+# ── Git ──────────────────────────────────────────────────────
+link_file "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
+
+# ── Shell ────────────────────────────────────────────────────
+link_file "$DOTFILES_DIR/.zshrc"    "$HOME/.zshrc"
+link_file "$DOTFILES_DIR/.zprofile" "$HOME/.zprofile"
+
 # ── Claude Code ──────────────────────────────────────────────
 CLAUDE_DIR="$HOME/.claude"
 mkdir -p "$CLAUDE_DIR"
 
-# Symlink settings.json (skip if already a symlink)
-if [ -L "$CLAUDE_DIR/settings.json" ]; then
-  echo "  [skip] ~/.claude/settings.json already symlinked"
-elif [ -f "$CLAUDE_DIR/settings.json" ]; then
-  echo "  [backup] ~/.claude/settings.json -> ~/.claude/settings.json.bak"
-  mv "$CLAUDE_DIR/settings.json" "$CLAUDE_DIR/settings.json.bak"
-  ln -s "$DOTFILES_DIR/.claude/settings.json" "$CLAUDE_DIR/settings.json"
-  echo "  [link] ~/.claude/settings.json"
-else
-  ln -s "$DOTFILES_DIR/.claude/settings.json" "$CLAUDE_DIR/settings.json"
-  echo "  [link] ~/.claude/settings.json"
-fi
+link_file "$DOTFILES_DIR/.claude/settings.json" "$CLAUDE_DIR/settings.json"
 
-# Symlink keybindings.json if it exists in dotfiles
 if [ -f "$DOTFILES_DIR/.claude/keybindings.json" ]; then
-  if [ -L "$CLAUDE_DIR/keybindings.json" ]; then
-    echo "  [skip] ~/.claude/keybindings.json already symlinked"
-  else
-    [ -f "$CLAUDE_DIR/keybindings.json" ] && mv "$CLAUDE_DIR/keybindings.json" "$CLAUDE_DIR/keybindings.json.bak"
-    ln -s "$DOTFILES_DIR/.claude/keybindings.json" "$CLAUDE_DIR/keybindings.json"
-    echo "  [link] ~/.claude/keybindings.json"
-  fi
+  link_file "$DOTFILES_DIR/.claude/keybindings.json" "$CLAUDE_DIR/keybindings.json"
 fi
 
 echo ""
-echo "Done! Claude Code settings are now synced from dotfiles."
-echo "Remember: git pull in ~/dotfiles to get latest settings from other machines."
+echo "Done! Run 'git pull' in ~/dotfiles on other machines to sync."
