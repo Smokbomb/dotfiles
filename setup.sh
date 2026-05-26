@@ -38,5 +38,20 @@ if [ -f "$DOTFILES_DIR/.claude/keybindings.json" ]; then
   link_file "$DOTFILES_DIR/.claude/keybindings.json" "$CLAUDE_DIR/keybindings.json"
 fi
 
+# ── Claude Skills ─────────────────────────────────────────────
+SKILLS_SRC="$DOTFILES_DIR/.claude/skills"
+SKILLS_DST="$CLAUDE_DIR/skills"
+if [ -d "$SKILLS_SRC" ]; then
+  if [ -L "$SKILLS_DST" ]; then
+    echo "  [skip] $SKILLS_DST already symlinked"
+  elif [ -d "$SKILLS_DST" ]; then
+    mv "$SKILLS_DST" "$SKILLS_DST.bak"
+    echo "  [backup] $SKILLS_DST.bak"
+    ln -s "$SKILLS_SRC" "$SKILLS_DST" && echo "  [link] $SKILLS_DST"
+  else
+    ln -s "$SKILLS_SRC" "$SKILLS_DST" && echo "  [link] $SKILLS_DST"
+  fi
+fi
+
 echo ""
 echo "Done! Run 'git pull' in ~/dotfiles on other machines to sync."
