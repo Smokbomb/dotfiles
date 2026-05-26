@@ -1,0 +1,59 @@
+{
+  "scheduledTasks": [
+    {
+      "id": "connect-x-dev-workflow",
+      "enabled": true,
+      "filePath": "C:\\Users\\USER\\Documents\\Claude\\Scheduled\\connect-x-dev-workflow\\SKILL.md",
+      "createdAt": 1778560066561,
+      "lastRunAt": "2026-05-17T05:14:03.272Z",
+      "userSelectedFolders": [
+        "C:\\Users\\USER\\Documents\\GitHub\\Connect-x (1)"
+      ],
+      "spaceId": "d6735136-10c4-4d1e-a708-62b1be4a5e9c",
+      "notifySessionId": "local_99d6b971-c312-410d-89b5-642c59f47185"
+    },
+    {
+      "id": "notion-rd-paiboon-analysis",
+      "cronExpression": "0 */3 * * *",
+      "enabled": true,
+      "filePath": "C:\\Users\\USER\\Documents\\Claude\\Scheduled\\notion-rd-paiboon-analysis\\SKILL.md",
+      "createdAt": 1778644639805,
+      "lastRunAt": "2026-05-26T02:03:33.739Z",
+      "lastScheduledFor": "2026-05-26T02:00:00.000Z",
+      "userSelectedFolders": [
+        "C:\\Users\\USER\\Documents\\GitHub"
+      ],
+      "approvedPermissions": [
+        {
+          "toolName": "mcp__c21d16c7-03b1-4fe3-ba00-b50325b4f5ea__notion-create-comment"
+        },
+        {
+          "toolName": "mcp__c21d16c7-03b1-4fe3-ba00-b50325b4f5ea__notion-update-page"
+        },
+        {
+          "toolName": "mcp__c21d16c7-03b1-4fe3-ba00-b50325b4f5ea__notion-create-view"
+        },
+        {
+          "toolName": "mcp__c21d16c7-03b1-4fe3-ba00-b50325b4f5ea__notion-update-view"
+        }
+      ],
+      "notifySessionId": "local_3bab1139-5c96-409a-8e6d-0dc9f598b3d9"
+    }
+  ],
+  "recordedSkips": {
+    "notion-rd-paiboon-analysis": [
+      {
+        "at": 1779760833072,
+        "reason": "per_task_limit"
+      },
+      {
+        "at": 1779760893083,
+        "reason": "per_task_limit"
+      },
+      {
+        "at": 1779760953096,
+        "reason": "per_task_limit"
+      }
+    ]
+  }
+}

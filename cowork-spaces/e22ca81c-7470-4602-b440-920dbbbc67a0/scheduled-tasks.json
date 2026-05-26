@@ -1,0 +1,65 @@
+{
+  "scheduledTasks": [
+    {
+      "id": "cx-step-1-read-notion-task",
+      "enabled": true,
+      "filePath": "C:\\Users\\USER\\Documents\\Claude\\Scheduled\\cx-step-1-read-notion-task\\SKILL.md",
+      "createdAt": 1778320094111,
+      "userSelectedFolders": [
+        "C:\\Users\\USER\\Documents\\GitHub"
+      ],
+      "notifySessionId": "local_d2de7a07-3247-42b3-b0d4-fed9e2c3411f"
+    },
+    {
+      "id": "cx-step-2-analyze",
+      "enabled": true,
+      "filePath": "C:\\Users\\USER\\Documents\\Claude\\Scheduled\\cx-step-2-analyze\\SKILL.md",
+      "createdAt": 1778320107949,
+      "userSelectedFolders": [
+        "C:\\Users\\USER\\Documents\\GitHub"
+      ],
+      "notifySessionId": "local_d2de7a07-3247-42b3-b0d4-fed9e2c3411f"
+    },
+    {
+      "id": "cx-step-3-write-code",
+      "enabled": true,
+      "filePath": "C:\\Users\\USER\\Documents\\Claude\\Scheduled\\cx-step-3-write-code\\SKILL.md",
+      "createdAt": 1778320125742,
+      "userSelectedFolders": [
+        "C:\\Users\\USER\\Documents\\GitHub"
+      ],
+      "notifySessionId": "local_d2de7a07-3247-42b3-b0d4-fed9e2c3411f"
+    },
+    {
+      "id": "cx-step-4-write-tests",
+      "enabled": true,
+      "filePath": "C:\\Users\\USER\\Documents\\Claude\\Scheduled\\cx-step-4-write-tests\\SKILL.md",
+      "createdAt": 1778320127547,
+      "userSelectedFolders": [
+        "C:\\Users\\USER\\Documents\\GitHub"
+      ],
+      "notifySessionId": "local_d2de7a07-3247-42b3-b0d4-fed9e2c3411f"
+    },
+    {
+      "id": "cx-step-5-open-pr",
+      "enabled": true,
+      "filePath": "C:\\Users\\USER\\Documents\\Claude\\Scheduled\\cx-step-5-open-pr\\SKILL.md",
+      "createdAt": 1778320128660,
+      "userSelectedFolders": [
+        "C:\\Users\\USER\\Documents\\GitHub"
+      ],
+      "notifySessionId": "local_d2de7a07-3247-42b3-b0d4-fed9e2c3411f"
+    },
+    {
+      "id": "cx-step-6-ready-to-deploy",
+      "enabled": true,
+      "filePath": "C:\\Users\\USER\\Documents\\Claude\\Scheduled\\cx-step-6-ready-to-deploy\\SKILL.md",
+      "createdAt": 1778320130326,
+      "userSelectedFolders": [
+        "C:\\Users\\USER\\Documents\\GitHub"
+      ],
+      "notifySessionId": "local_d2de7a07-3247-42b3-b0d4-fed9e2c3411f"
+    }
+  ],
+  "recordedSkips": {}
+}

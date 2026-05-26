@@ -57,5 +57,25 @@ if (Test-Path "$DotfilesDir\.claude\skills") {
 $AppData = $env:APPDATA
 Link-File "$AppData\Claude\claude_desktop_config.json" "$DotfilesDir\claude_desktop_config.json"
 
+# ── Scheduled Task SKILL.md files ────────────────────────────
+$ScheduledSrc = "$DotfilesDir\claude-scheduled"
+$ScheduledDst = "$env:USERPROFILE\Documents\Claude\Scheduled"
+if (Test-Path $ScheduledSrc) {
+  if (-not (Test-Path "$env:USERPROFILE\Documents\Claude")) {
+    New-Item -ItemType Directory -Path "$env:USERPROFILE\Documents\Claude" | Out-Null
+  }
+  Link-Dir $ScheduledDst $ScheduledSrc
+}
+
+# ── Cowork Space scheduled-tasks.json ────────────────────────
+$AccountId = "e7cba526-6f76-443c-a20f-4b01c2066a74"
+$SpacesBase = "$AppData\Claude\local-agent-mode-sessions\$AccountId"
+Get-ChildItem "$DotfilesDir\cowork-spaces" -Directory | ForEach-Object {
+  $spaceId = $_.Name
+  $spaceDir = "$SpacesBase\$spaceId"
+  if (-not (Test-Path $spaceDir)) { New-Item -ItemType Directory -Path $spaceDir | Out-Null }
+  Link-File "$spaceDir\scheduled-tasks.json" "$DotfilesDir\cowork-spaces\$spaceId\scheduled-tasks.json"
+}
+
 Write-Host ""
 Write-Host "Done! Run 'git pull' in dotfiles on other machines to sync."

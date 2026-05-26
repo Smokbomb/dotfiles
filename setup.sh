@@ -40,10 +40,37 @@ fi
 
 # ── Claude Desktop / Cowork preferences ──────────────────────
 MAC_CLAUDE_APP="$HOME/Library/Application Support/Claude"
-if [ -d "$MAC_CLAUDE_APP" ]; then
-  mkdir -p "$MAC_CLAUDE_APP"
-  link_file "$DOTFILES_DIR/claude_desktop_config.json" "$MAC_CLAUDE_APP/claude_desktop_config.json"
+mkdir -p "$MAC_CLAUDE_APP"
+link_file "$DOTFILES_DIR/claude_desktop_config.json" "$MAC_CLAUDE_APP/claude_desktop_config.json"
+
+# ── Scheduled Task SKILL.md files ────────────────────────────
+mkdir -p "$HOME/Documents/Claude"
+SCHEDULED_DST="$HOME/Documents/Claude/Scheduled"
+if [ -d "$DOTFILES_DIR/claude-scheduled" ]; then
+  if [ -L "$SCHEDULED_DST" ]; then
+    echo "  [skip] $SCHEDULED_DST already symlinked"
+  elif [ -d "$SCHEDULED_DST" ]; then
+    mv "$SCHEDULED_DST" "$SCHEDULED_DST.bak"
+    echo "  [backup] $SCHEDULED_DST.bak"
+    ln -s "$DOTFILES_DIR/claude-scheduled" "$SCHEDULED_DST" && echo "  [link] $SCHEDULED_DST"
+  else
+    ln -s "$DOTFILES_DIR/claude-scheduled" "$SCHEDULED_DST" && echo "  [link] $SCHEDULED_DST"
+  fi
 fi
+
+# ── Cowork Space scheduled-tasks.json ────────────────────────
+ACCOUNT_ID="e7cba526-6f76-443c-a20f-4b01c2066a74"
+SPACES_BASE="$MAC_CLAUDE_APP/local-agent-mode-sessions/$ACCOUNT_ID"
+for space_dir in "$DOTFILES_DIR/cowork-spaces"/*/; do
+  SPACE_ID="$(basename "$space_dir")"
+  DST_DIR="$SPACES_BASE/$SPACE_ID"
+  mkdir -p "$DST_DIR"
+  SRC="$DOTFILES_DIR/cowork-spaces/$SPACE_ID/scheduled-tasks.json"
+  DST="$DST_DIR/scheduled-tasks.json"
+  # Copy with Mac path substitution (Windows paths → Mac paths)
+  sed "s|C:\\\\Users\\\\USER\\\\Documents|$HOME/Documents|g; s|\\\\|/|g" "$SRC" > "$DST"
+  echo "  [copy+fix] $DST"
+done
 
 # ── Claude Skills ─────────────────────────────────────────────
 SKILLS_SRC="$DOTFILES_DIR/.claude/skills"
