@@ -1,0 +1,33 @@
+{
+  "preferences": {
+    "chillingSlothLocation": {
+      "customPath": "C:\\Users\\USER\\Documents\\GitHub"
+    },
+    "launchPreviewPersistSession": true,
+    "coworkScheduledTasksEnabled": true,
+    "ccdScheduledTasksEnabled": true,
+    "sidebarMode": "epitaxy",
+    "bypassPermissionsModeEnabled": true,
+    "bypassPermissionsGateByAccount": {
+      "e7cba526-6f76-443c-a20f-4b01c2066a74": false
+    },
+    "dockBounceEnabled": true,
+    "coworkWebSearchEnabled": true,
+    "keepAwakeEnabled": true,
+    "coworkOnboardingResumeStep": null,
+    "chicagoEnabled": true,
+    "remoteToolsDeviceName": "desktop-g2rq5qr",
+    "ccAutoArchiveOnPrClose": true,
+    "ccRemoteControlDefaultEnabled": true,
+    "epitaxyPrefs": {
+      "starred-local-code-sessions": [],
+      "starred-cowork-spaces": [],
+      "starred-session-groups": [],
+      "dframe-local-slice": {
+        "pinnedOrder": [],
+        "customGroupAssignments": {},
+        "customGroupOrder": {}
+      }
+    }
+  }
+}

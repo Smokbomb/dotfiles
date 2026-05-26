@@ -38,6 +38,13 @@ if [ -f "$DOTFILES_DIR/.claude/keybindings.json" ]; then
   link_file "$DOTFILES_DIR/.claude/keybindings.json" "$CLAUDE_DIR/keybindings.json"
 fi
 
+# ── Claude Desktop / Cowork preferences ──────────────────────
+MAC_CLAUDE_APP="$HOME/Library/Application Support/Claude"
+if [ -d "$MAC_CLAUDE_APP" ]; then
+  mkdir -p "$MAC_CLAUDE_APP"
+  link_file "$DOTFILES_DIR/claude_desktop_config.json" "$MAC_CLAUDE_APP/claude_desktop_config.json"
+fi
+
 # ── Claude Skills ─────────────────────────────────────────────
 SKILLS_SRC="$DOTFILES_DIR/.claude/skills"
 SKILLS_DST="$CLAUDE_DIR/skills"

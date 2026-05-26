@@ -12,10 +12,11 @@ function Link-File($target, $source) {
     if ($existing.LinkType -eq "SymbolicLink") {
       Write-Host "  [skip] $target already symlinked"; return
     }
-    Move-Item $target "$target.bak"
+    Move-Item $target "$target.bak" -Force
     Write-Host "  [backup] $target.bak"
   }
-  cmd /c mklink "$target" "$source" | Out-Null
+  $result = cmd /c mklink "$target" "$source" 2>&1
+  if ($LASTEXITCODE -ne 0) { Write-Host "  [error] $result"; return }
   Write-Host "  [link] $target"
 }
 
@@ -51,6 +52,10 @@ if (Test-Path "$DotfilesDir\.claude\keybindings.json") {
 if (Test-Path "$DotfilesDir\.claude\skills") {
   Link-Dir "$ClaudeDir\skills" "$DotfilesDir\.claude\skills"
 }
+
+# ── Claude Desktop / Cowork preferences ──────────────────────
+$AppData = $env:APPDATA
+Link-File "$AppData\Claude\claude_desktop_config.json" "$DotfilesDir\claude_desktop_config.json"
 
 Write-Host ""
 Write-Host "Done! Run 'git pull' in dotfiles on other machines to sync."
