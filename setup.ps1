@@ -53,6 +53,11 @@ if (Test-Path "$DotfilesDir\.claude\skills") {
   Link-Dir "$ClaudeDir\skills" "$DotfilesDir\.claude\skills"
 }
 
+# ── Claude Scheduled Tasks ────────────────────────────────────
+if (Test-Path "$DotfilesDir\.claude\scheduled-tasks") {
+  Link-Dir "$ClaudeDir\scheduled-tasks" "$DotfilesDir\.claude\scheduled-tasks"
+}
+
 # ── Claude Desktop / Cowork preferences ──────────────────────
 $AppData = $env:APPDATA
 Link-File "$AppData\Claude\claude_desktop_config.json" "$DotfilesDir\claude_desktop_config.json"

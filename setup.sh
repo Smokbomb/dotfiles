@@ -72,6 +72,19 @@ for space_dir in "$DOTFILES_DIR/cowork-spaces"/*/; do
   echo "  [copy+fix] $DST"
 done
 
+# ── Claude Scheduled Tasks ────────────────────────────────────
+if [ -d "$DOTFILES_DIR/.claude/scheduled-tasks" ]; then
+  if [ -L "$CLAUDE_DIR/scheduled-tasks" ]; then
+    echo "  [skip] $CLAUDE_DIR/scheduled-tasks already symlinked"
+  elif [ -d "$CLAUDE_DIR/scheduled-tasks" ]; then
+    mv "$CLAUDE_DIR/scheduled-tasks" "$CLAUDE_DIR/scheduled-tasks.bak"
+    echo "  [backup] $CLAUDE_DIR/scheduled-tasks.bak"
+    ln -s "$DOTFILES_DIR/.claude/scheduled-tasks" "$CLAUDE_DIR/scheduled-tasks" && echo "  [link] $CLAUDE_DIR/scheduled-tasks"
+  else
+    ln -s "$DOTFILES_DIR/.claude/scheduled-tasks" "$CLAUDE_DIR/scheduled-tasks" && echo "  [link] $CLAUDE_DIR/scheduled-tasks"
+  fi
+fi
+
 # ── Claude Skills ─────────────────────────────────────────────
 SKILLS_SRC="$DOTFILES_DIR/.claude/skills"
 SKILLS_DST="$CLAUDE_DIR/skills"
