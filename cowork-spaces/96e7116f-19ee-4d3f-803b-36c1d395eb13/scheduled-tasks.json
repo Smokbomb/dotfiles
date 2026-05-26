@@ -13,6 +13,17 @@
       "notifySessionId": "local_99d6b971-c312-410d-89b5-642c59f47185"
     },
     {
+      "id": "sync-dotfiles-config",
+      "cronExpression": "0 9 * * *",
+      "enabled": true,
+      "filePath": "C:\\Users\\USER\\Documents\\Claude\\Scheduled\\sync-dotfiles-config\\SKILL.md",
+      "createdAt": 1748253600000,
+      "userSelectedFolders": [
+        "C:\\Users\\USER\\Documents\\GitHub\\dotfiles"
+      ],
+      "notifySessionId": "local_3bab1139-5c96-409a-8e6d-0dc9f598b3d9"
+    },
+    {
       "id": "notion-rd-paiboon-analysis",
       "cronExpression": "0 */3 * * *",
       "enabled": true,
