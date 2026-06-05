@@ -11,7 +11,16 @@
       "Bash(ls:*)",
       "Bash(find:*)",
       "Bash(grep:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(*)",
+      "PowerShell(*)",
+      "mcp__c21d16c7-03b1-4fe3-ba00-b50325b4f5ea__notion-query-database-view",
+      "mcp__c21d16c7-03b1-4fe3-ba00-b50325b4f5ea__notion-fetch",
+      "mcp__c21d16c7-03b1-4fe3-ba00-b50325b4f5ea__notion-create-comment",
+      "mcp__c21d16c7-03b1-4fe3-ba00-b50325b4f5ea__notion-update-page",
+      "mcp__c21d16c7-03b1-4fe3-ba00-b50325b4f5ea__notion-get-comments",
+      "mcp__line-bot__push_text_message",
+      "mcp__line-bot__push_flex_message"
     ],
     "deny": []
   }
